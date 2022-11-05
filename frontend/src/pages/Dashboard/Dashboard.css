@@ -1,0 +1,58 @@
+.title {
+  margin-top: 20vh;
+  font-size: 36px;
+}
+
+.create-bot-icon-div {
+  margin: auto;
+}
+
+.create-bot-icon {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  background-color: #CEE5D0;
+  border-radius: 50%;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+
+.bot {
+  background-color: #CEE5D0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 10px 30px;
+  border: 1px solid black;
+  border-radius: 7px;
+}
+
+.bot h3 {
+  font-size: 1.1rem;
+  padding: 0;
+  margin: 0;
+}
+
+.bot.bot-transparent {
+  opacity: 0.5 !important;
+}
+
+.my-bots-section {
+  background-color: #94B49F !important;
+  margin: 0 30px;
+  margin-top: 10vh;
+}
+
+.my-bots-section h2 {
+  font-size: 1.7rem;
+}
+/*# sourceMappingURL=Dashboard.css.map */
