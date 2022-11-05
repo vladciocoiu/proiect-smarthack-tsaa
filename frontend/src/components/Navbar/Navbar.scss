@@ -1,0 +1,17 @@
+nav {
+    width: 100vw;
+    height: 70px;;
+    background-color: #ECB390;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow-x: scroll;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10vw;
+}
+
+.nav-icon {
+    font-size: 25px;
+}

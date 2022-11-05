@@ -1,0 +1,23 @@
+nav {
+  width: 100vw;
+  height: 70px;
+  background-color: #ECB390;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow-x: scroll;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  padding: 10vw;
+}
+
+.nav-icon {
+  font-size: 25px;
+}
+/*# sourceMappingURL=Navbar.css.map */
