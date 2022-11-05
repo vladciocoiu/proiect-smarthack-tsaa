@@ -8,19 +8,56 @@ from django.forms.models import model_to_dict
 from rest_framework.decorators import api_view
 import json
 from django.views.decorators.csrf import csrf_exempt
-from .serializers import *
 
 
-Bots = [Bot(0, userId=1, name="Bot1"), Bot(1, userId=1, name="Bot2")]
-Tasks = []
+Bots = [
+    Bot(
+        0,
+        userId = 1,
+        username = "test",
+        active = True,
+        redditUsername = "test",
+        clientId = "test",
+        clientSecret = "test",
+        password = "test",
+        Task = {"Type": "reply", "params": {"subreddit": "test", "keywords": ["test"], "message": "test"}}
+    ),
+    Bot(
+        1,
+        userId = 1,
+        username = "test2",
+        active = True,
+        redditUsername = "test2",
+        clientId = "test2",
+        clientSecret = "test2",
+        password = "test2",
+        Task = {"Type": "reply", "params": {"subreddit": "test2", "keywords": ["test2"], "message": "test2"}}
+    )
+
+]
 
 @csrf_exempt
-@api_view(['GET'])
-def getBots(request):
+@api_view(['GET', 'POST'])
+def bots(request):
     if(request.method == 'GET'):
         BotsDict = [model_to_dict(x) for x in Bots]
         BotsJson = json.dumps(BotsDict)
         return HttpResponse(BotsJson)
+    if(request.method == 'POST'):# create a new bot
+        print(request.data)
+        bot = Bot(len(Bots), 
+        userId=1,
+        username=request.data.get('username'),
+        redditUsername=request.data.get('redditUsername'),
+        clientId=request.data.get('clientId'),
+        clientSecret=request.data.get('clientSecret'),
+        password=request.data.get('password')
+        )
+        Bots.append(bot)
+        botDict = model_to_dict(bot)
+        botJson = json.dumps(botDict)
+        return HttpResponse(botJson)
+    
 
 @csrf_exempt
 @api_view(['GET', 'DELETE', 'PUT'])
@@ -43,14 +80,6 @@ def bot(request, botId):
         botJson = json.dumps(botDict)
         return HttpResponse("Bot updated")
 
-@csrf_exempt
-@api_view(['POST'])
-def createBot(request):
-    if(request.method == 'POST'):# create a new bot
-        bot = Bot(len(Bots), userId=request.data.get('userId'), name=request.data.get('name'))
-        Bots.append(bot)
-        return HttpResponse("Bot created")
-    #if(request.method == 'UPDATE'):
 
 @csrf_exempt
 @api_view(['GET'])
