@@ -32,8 +32,8 @@ Bots = [
                 "params": 
                 {
                     "keywords": ["bug", "wrong", "buggy", "glitch"],
-                    "subreddit": "FIFA",
-                    "findIn": "posts"
+                    "subreddit": "tsaa",
+                    "findIn": "comments"
                 }
             },
             {
@@ -113,7 +113,7 @@ class taskRunner:
                             botRunner.redditBot.task_delete(results)
                         if(task["type"] == "notify"):
                             botRunner.redditBot.task_notify(60)
-                    time.sleep(3)
+                    time.sleep(10)
 
 
 
