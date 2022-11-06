@@ -1,0 +1,25 @@
+import json
+from django.forms.models import model_to_dict
+from ..models import *
+
+
+def modelToJson(model):
+    return json.dumps(model_to_dict(model))
+
+def jsonToBot(json):
+    return Bot(
+        userId = json.get('userId'),
+        username = json.get('username'),
+        redditUsername = json.get('redditUsername'),
+        clientId = json.get('clientId'),
+        clientSecret = json.get('clientSecret'),
+        password = json.get('password')
+    )
+
+def jsonToTask(json):
+    return Task(
+        botId = json.get('botId'),
+        name = json.get('name'),
+        Type = json.get('Type'),
+        params = json.loads(json.get('params'))
+    )

@@ -8,19 +8,40 @@ from django.forms.models import model_to_dict
 from rest_framework.decorators import api_view
 import json
 from django.views.decorators.csrf import csrf_exempt
-from .serializers import *
+from .taskRunner.taskRunner import taskRunner
+from .taskRunner.taskRunner import Bots
+import threading
 
 
-Bots = [Bot(0, userId=1, name="Bot1"), Bot(1, userId=1, name="Bot2")]
-Tasks = []
+# username = "tsaaaaaaaa"
+# password = "parola123"
+# client_id = "23bQR7XTzbODBmXw2WQHlg"
+# client_secret = "Qm8T8hV2SjHmdQGUYk6gKz5NZbT19w"
+
+_taskRunner = taskRunner()
 
 @csrf_exempt
-@api_view(['GET'])
-def getBots(request):
+@api_view(['GET', 'POST'])
+def bots(request):
     if(request.method == 'GET'):
         BotsDict = [model_to_dict(x) for x in Bots]
         BotsJson = json.dumps(BotsDict)
         return HttpResponse(BotsJson)
+    if(request.method == 'POST'):# create a new bot
+        print(request.data)
+        bot = Bot(len(Bots), 
+        userId=1,
+        username=request.data.get('username'),
+        redditUsername=request.data.get('redditUsername'),
+        clientId=request.data.get('clientId'),
+        clientSecret=request.data.get('clientSecret'),
+        password=request.data.get('password')
+        )
+        Bots.append(bot)
+        botDict = model_to_dict(bot)
+        botJson = json.dumps(botDict)
+        return HttpResponse(botJson)
+    
 
 @csrf_exempt
 @api_view(['GET', 'DELETE', 'PUT'])
@@ -35,49 +56,37 @@ def bot(request, botId):
         botDict = model_to_dict(bot)
         botJson = json.dumps(botDict)
         return HttpResponse("Bot deleted")
-    if(request.method == 'PUT'):
-        bot = Bots[botId]
-        bot.name = request.data.get('name')
-        bot.userId = request.data.get('userId')
+    if(request.method == 'PUT'):# create a new bot
+        print(request.data)
+        bot = Bot(
+            botId, 
+            userId=1,
+            username=request.data.get('username'),
+            active=request.data.get('active'),
+            redditUsername=request.data.get('redditUsername'),
+            clientId=request.data.get('clientId'),
+            clientSecret=request.data.get('clientSecret'),
+            password=request.data.get('password'),
+            taskQueue=request.data.get('taskQueue')
+            )
+        Bots[botId] = bot
         botDict = model_to_dict(bot)
         botJson = json.dumps(botDict)
-        return HttpResponse("Bot updated")
-
+        return HttpResponse(botJson)
+        
 @csrf_exempt
-@api_view(['POST'])
-def createBot(request):
-    if(request.method == 'POST'):# create a new bot
-        bot = Bot(len(Bots), userId=request.data.get('userId'), name=request.data.get('name'))
-        Bots.append(bot)
-        return HttpResponse("Bot created")
-    #if(request.method == 'UPDATE'):
+@api_view(['GET'])
+def start(request):
+    if(request.method == 'GET'):
+        if(_taskRunner.started == False):
+            _taskRunner.start()
+            threading.Thread(target=_taskRunner.run()).start()
+        print("start called")
+        return HttpResponse("Bot started")
 
 @csrf_exempt
 @api_view(['GET'])
-def getTasks(request, botId):
+def stop(request):
     if(request.method == 'GET'):
-        TasksDict = [model_to_dict(x) for x in Tasks]
-        TasksJson = json.dumps(TasksDict)
-        return HttpResponse(TasksJson)
-
-@csrf_exempt
-@api_view(['GET', 'DELETE', 'PUT'])
-def task(request, botId, taskId):
-    if(request.method == 'GET'):
-        task = Tasks[taskId]
-        taskDict = model_to_dict(task)
-        taskJson = json.dumps(taskDict)
-        return HttpResponse(taskJson)
-    if(request.method == 'DELETE'):
-        task = Tasks.pop(taskId)
-        taskDict = model_to_dict(task)
-        taskJson = json.dumps(taskDict)
-        return HttpResponse("Task deleted")
-    if(request.method == 'PUT'):
-        task = Tasks[taskId]
-        task.name = request.data.get('name')
-        task.params = request.data.get('params')
-        taskDict = model_to_dict(task)
-        taskJson = json.dumps(taskDict)
-        return HttpResponse("Task updated")
-        
+        _taskRunner.stop()
+        return HttpResponse("Bot stopped")
