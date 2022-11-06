@@ -9,5 +9,4 @@ class Bot(models.Model):
     clientId = models.CharField(max_length=100)
     clientSecret = models.CharField(max_length=100)
     password = models.CharField(max_length=100)
-    Task = models.JSONField(default=dict)
-
+    taskQueue = models.JSONField(default=dict)

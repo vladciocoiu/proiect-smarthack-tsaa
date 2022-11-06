@@ -1,0 +1,18 @@
+{
+    "taskQueue":
+    [
+        {
+            "type": "find",
+            "keywords": ["keyword1", "keyword2"],
+            "in":"comments"
+        },
+        {
+            "type": "reply",
+            "message": "message2"
+        },
+        {
+            "type": "sendResults",
+            "time": "10M"
+        }
+    ]
+}
