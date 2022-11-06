@@ -1,0 +1,225 @@
+.bot-name {
+    margin-top: 20vh;
+    margin-bottom: 5vh;
+}
+
+#dropdown-button {
+    background-color: #CEE5D0 !important;
+    min-width: 110px;
+    color: #555 !important;
+    border: none;
+}
+
+.keyword-input {
+    width: 100px !important;
+    font-size: 14px !important;
+}
+
+
+.find-in-div {
+    display: grid;
+    grid-gap: 50px 0;
+    align-items: center;
+    justify-items: center;
+    grid-template-areas: "f k i fi"
+    "kl kl kl kl"
+    "l l l l"
+    "m m m m"
+    "s s s s";
+    border-radius: 7px;
+    background-color: #94B49F !important;
+    margin: 50px 16px;
+    margin-top: 20px;
+    font-size: 14px;
+    width: calc(100vw - 32px);
+    padding: 50px 20px;
+    .find-in-text.find {
+        grid-area: f;
+    }
+    .add-keyword-form {
+        grid-area: k;
+    }
+    .find-in-text.in {
+        grid-area: i;
+    }
+    .dropdown {
+        grid-area: fi;
+    }
+    .keyword-list {
+        grid-area: kl;
+    }
+    p {
+        margin: 0;
+    }
+}
+.keyword-list {
+    width: 100%;
+    // border: 1px solid black;
+    background-color: #CEE5D0 !important;
+    display: flex;
+    flex-wrap: wrap;
+    max-height: 70px;
+    overflow-y: scroll;
+    gap: 3px;
+    border-radius: 5px;
+    .keyword {
+    background-color: #f3f7f3 !important;
+        padding: 4px 10px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+        font-size: 12px;
+        .delete-keyword-icon {
+            position: relative;
+            top: 1px;
+        }
+    }
+}
+
+.delete-keyword-icon:hover {
+    cursor: pointer;
+}
+
+.no-keywords {
+    font-size: 13px;
+    color: #555;
+}
+
+.find-in-text {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+
+.submit-action {
+    width: 200px;
+    border-radius: 6px;
+    margin: auto;
+}
+
+.new-action-form {
+    border-radius: 7px;
+    background-color: #94B49F !important;
+    margin: 0 30px;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center !important;
+    gap: 30px;
+}
+
+
+.action-form-Notify {
+    display: grid;
+    grid-template-areas: "t t"
+    "d1 d2"
+    "s s";
+    align-items: center;
+    justify-items: center;
+    .new-action-title {
+        grid-area: t;
+    }
+    .submit-action {
+        grid-area: s;
+    }
+}
+
+.action-form-Delete {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.action-form-Reply {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.new-action-title {
+    font-size: 20px;
+}
+
+#action-form-dropdown, #time-dropdown {
+    background-color: #CEE5D0 !important;
+    color: #555 !important;
+    border: none;
+    min-width: 100px;
+}
+
+.save-find-in {
+    grid-area: s;
+    width: 200px;
+    border-radius: 7px;
+}
+
+.create-action {
+    margin-bottom: 5vh;
+    border-radius: 7px;
+}
+
+.update-successful-message {
+    position: relative;
+    top: 30px;
+    color: white;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px 1px black;
+    margin: auto;
+    grid-area: m;
+    transition: 0.3s ease-in-out;
+}
+.transparent {
+    opacity: 0;
+}
+.opaque {
+    opacity: 1;
+}
+
+.actions-list {
+    width: 100%;
+    grid-area: l;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.action {
+    background-color: #CEE5D0 !important;
+    color: #333 !important;
+    width: 100%;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+button {
+    border-radius: 7px;
+    padding: 10px 5px;
+    background-color: #ECB390 !important;
+    border: none !important;
+    color: #444 !important;
+}
+
+@media screen and(min-width: 1024px) {
+    .edit-bot-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .find-in-div, .new-action-form {
+        max-width: 500px;
+        margin: 50px auto !important;
+    }
+    .new-action-form.p-3 {
+        width: 500px;
+        height: 250px;
+    }
+    .create-action {
+        margin-top: 30px;
+    }
+    
+}
