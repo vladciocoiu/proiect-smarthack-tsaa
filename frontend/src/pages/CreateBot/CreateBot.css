@@ -1,0 +1,41 @@
+.create-bot-form {
+  border-radius: 7px;
+  background-color: #94B49F !important;
+  margin: 0 30px;
+  font-size: 14px;
+  max-width: 500px;
+  margin-top: 20vh;
+}
+
+input {
+  border-radius: 5px;
+  border: none;
+  padding: 8px 20px;
+  background-color: #CEE5D0;
+}
+
+.form-submit-button {
+  background-color: #ECB390 !important;
+  border: none !important;
+  color: #444 !important;
+  padding: 12px 20px !important;
+}
+
+@media screen and (min-width: 1024px) {
+  .form-title {
+    margin-bottom: 50px !important;
+  }
+  .form-submit-button {
+    margin: 0 80px !important;
+    margin-top: 80px !important;
+  }
+  .create-bot-form {
+    max-width: 500px;
+    margin: auto;
+    margin-top: 20vh;
+  }
+  .create-bot-form input {
+    margin: 0 50px;
+  }
+}
+/*# sourceMappingURL=CreateBot.css.map */
