@@ -102,7 +102,7 @@ export default function EditBot() {
                 </form>
                 <p className="find-in-text in">IN</p>
                 <DropdownButton id="dropdown-button" title={findIn}>
-                    {["Comment", "Post"].map(el => <Dropdown.Item onClick={() => setFindIn(el)}>{el}</Dropdown.Item> )}
+                    {["Comments", "Posts"].map(el => <Dropdown.Item onClick={() => setFindIn(el)}>{el}</Dropdown.Item> )}
                 </DropdownButton>
                 <div className="keyword-list shadow-sm border-0 p-2">
                     {(keywords.length 
