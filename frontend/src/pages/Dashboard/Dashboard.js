@@ -5,7 +5,7 @@ import "./Dashboard.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 
-const API_URL = "http://192.168.22.162:8000/api";
+const API_URL = process.env.REACT_APP_API_URL;
 
 export default function Dashboard() {
 

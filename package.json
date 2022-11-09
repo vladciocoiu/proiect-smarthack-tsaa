@@ -1,0 +1,21 @@
+{
+  "name": "proiect-smarthack-tsaa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "devstart": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
+    "server": "cd backend/mysite && python3 manage.py runserver",
+    "client": "cd frontend && npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vladciocoiu/proiect-smarthack-tsaa.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vladciocoiu/proiect-smarthack-tsaa/issues"
+  },
+  "homepage": "https://github.com/vladciocoiu/proiect-smarthack-tsaa#readme"
+}

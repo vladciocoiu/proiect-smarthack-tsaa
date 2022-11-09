@@ -30,7 +30,10 @@ ALLOWED_HOSTS=['*']
 CORS_ORIGIN_ALLOW_ALL = True
 
 
-ALLOWED_HOSTS = ['192.168.22.162']
+ALLOWED_HOSTS = [
+    '192.168.22.162',
+    'localhost'
+]
 
 
 
